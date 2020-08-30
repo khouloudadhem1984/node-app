@@ -21,6 +21,8 @@ server.listen(port ,function(error){
     if(error){
         console.log('something error happened');
     }else{
+        console.log('Hello Absi');
         console.log('server is listening on port : ' + port);
+        console.log('Go start your test ...');
     }
 })
