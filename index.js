@@ -5,9 +5,11 @@ const server = http.createServer(function(req,res){
     res.writeHead(200,{'Content-Type':'text/html'})
     fs.readFile('index.html',function(error,data){
         if(error){
+            console.log('new customer visited the page faced an Error');
             res.writeHead(404);
             res.write('Error: File Not Found');
         }else{
+            console.log('new customer visited the page');
             res.write(data);
         }
         res.end();
