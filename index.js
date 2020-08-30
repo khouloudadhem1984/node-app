@@ -1,11 +1,23 @@
-const express = require('express');
-
-const app = express();
-
-app.get('/',(req,res)=>{
-    res.send('<h1>My Node App</h1>');
+const http = require('http');
+const fs = require('fs');
+const port = 3000;
+const server = http.createServer(function(req,res){
+    res.writeHead(200,{'Content-Type':'text/html'})
+    fs.readFile('index.html',function(error,data){
+        if(error){
+            res.writeHead(404);
+            res.write('Error: File Not Found');
+        }else{
+            res.write(data);
+        }
+        res.end();
+    })
 });
 
-app.listen(5000,()=>{
-    console.log('App is listening on port 5000');
+server.listen(port ,function(error){
+    if(error){
+        console.log('something error happened');
+    }else{
+        console.log('server is listening on port : ' + port);
+    }
 })
